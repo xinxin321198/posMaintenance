@@ -1,0 +1,61 @@
+#override("content")
+<style>
+textarea.ui-input-text{min-height:200px;}
+</style>
+
+<form id="posForm" method="post" action="/mobileservice/serviceSave" data-transition="flip" onsubmit="return toVaild()">
+	<input type="hidden" name="machineId" value="$!{machine.id}"/>
+	<input type="hidden" name="userId" value="$!{user.id}"/>
+	<input type="hidden" id="isNormal"  name="isNormal" value="0"/>
+	<label>pos机编号：$!{machine.code}</label>
+	<label>pos机备注：$!{machine.remarks}</label>
+	
+	<div data-role="collapsible">
+      <h1>点击我 - 显示商家信息！</h1>
+		<label>商家名称：$!{company.name}</label>
+		<label>商家地址：$!{company.address}</label>
+		<label>商家座机：$!{company.phone}</label>
+		<label>商家电话：$!{company.mobile}</label>
+		<label>商家备注：$!{company.remarks}</label>
+     	</div>
+
+	<div data-role="collapsible">
+      <h1>点击我 - 填写维护信息！</h1>
+		<label>当前维护人员：$!{user.loginName}</label>
+		<div data-role="fieldcontain">
+	    <select name="isNormal" id="switch" data-role="slider" onchange="ChangeEvent();" required="required">
+	      <option value="0">正常</option>
+	      <option value="1">故障</option>
+	    </select>
+	  </div>
+        <label for="info">维护情况:</label>
+        <textarea name="msg" id="msg"></textarea>
+     	</div>
+	
+	
+	<input type="submit" value="提交按钮" data-icon="action" data-theme="b"> 
+
+
+	<a href="/mobileservice/index" data-transition="flip" class="ui-btn ui-icon-search ui-btn-icon-left ui-corner-all ui-shadow ui-overlay-shadow ">返回</a>
+</form>
+<script type="text/javascript">
+  //显示翻转切换开关当前的值
+    function ChangeEvent(){
+ 	var sValue = $("#switch").val();
+ 	$("#is_normal").val(sValue);
+}
+  
+
+	function toVaild() {
+		if (confirm("确定提交维护信息？")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+#end
+
+#extends("/common/mobile-base.html")
+
+

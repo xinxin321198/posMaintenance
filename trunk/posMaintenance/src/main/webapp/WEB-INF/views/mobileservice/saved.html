@@ -1,0 +1,36 @@
+#override("content")
+<style>
+textarea.ui-input-text{min-height:200px;}
+</style>
+
+<form id="posForm" method="post" action="/mobileservice/serviceSave" data-transition="flip">
+	<label>pos机编号：$!{machine.code}</label>
+	<label>pos机备注：$!{machine.remarks}</label>
+	
+	<div data-role="collapsible">
+      <h1>点击我 - 显示商家信息！</h1>
+		<label>商家名称：$!{company.name}</label>
+		<label>商家地址：$!{company.address}</label>
+		<label>商家座机：$!{company.phone}</label>
+		<label>商家电话：$!{company.mobile}</label>
+		<label>商家备注：$!{company.remarks}</label>
+    </div>
+
+	<div data-role="collapsible">
+      <h1>点击我 - 显示已维护信息！如有错误请重新提交</h1>
+		<label>当前维护人员：$!{user.loginName}</label>
+		<div data-role="fieldcontain">
+		<label>是否正常：#if ($posServiceLog.isNormal==0) 正常 #else 故障 #end</label>
+	  </div>
+        <label for="info">维护情况:</label>
+        <textarea name="msg" id="msg" readonly="readonly">$!{posServiceLog.msg}</textarea>
+     </div>
+	
+	<label style="color:$!{color};">$!{info}</label>
+	<a href="/mobileservice/index" data-transition="flip" class="ui-btn ui-icon-search ui-btn-icon-left ui-corner-all ui-shadow ui-overlay-shadow ">返回</a>
+</form>
+#end
+
+#extends("/common/mobile-base.html")
+
+

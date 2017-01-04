@@ -1,0 +1,20 @@
+#override("content")
+			<form id="posForm" action="/mobileservice/serviceForm" method="post" data-transition="flip">
+				<label for="fname">输入pos机编号进行维护：</label> 
+				<input type="text" name="code" id="code"> 
+				<a  onClick="query()" class="ui-btn ui-icon-search ui-btn-icon-left ui-corner-all ui-shadow ui-overlay-shadow " >查询pos机信息</a>
+				<script>
+					function query(){
+						//$("#posForm").attr("action","/mobileservice/serviceForm");
+						var code = $("#code").val();
+						if(code==""||code==null){
+							alert('pos机编码不能为空！请填写');
+							return ;
+						}
+						$("#posForm").submit();
+					}
+				</script>
+			</form>
+#end
+
+#extends("/common/mobile-base.html")

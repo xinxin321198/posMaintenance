@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("/common/mobile-head.html")
+
+</head>
+
+<body>
+	<div data-role="page" id="pageone" data-theme="a">
+		<div data-role="header">
+			<h1>pos机维护</h1>
+		</div>
+		<div data-role="main" class="ui-content"  data-transition="slide">
+		#block("content")#end
+		</div>
+		<div data-role="footer">
+			<h1></h1>
+		</div>
+	</div>
+</body>
+<script src="#springUrl('/static/js/jquery-2.1.1.js')"></script>
+<script	src="#springUrl('/static/js/plugins/jquerymobile/jquery.mobile-1.4.5.min.js')"></script>
+#block("js")#end
+</html>
